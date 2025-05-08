@@ -218,7 +218,7 @@ if st.session_state.df is not None:
                         y_pred = pipe.predict(X_test)
                         mse = mean_squared_error(y_test, y_pred)
                         r2 = r2_score(y_test, y_pred)
-                        results.append({"Model": name, "MSE": f"{mse:.2f}", "R² Score": f"{r2:.2f}"})
+                        results.append({"Model": name, "MSE": f"{mse:.4f}", "R² Score": f"{r2:.4f}"})
                     except Exception as e:
                         st.error(f"Error with {name}: {str(e)}")
                         results.append({"Model": name, "MSE": "Failed", "R² Score": "Failed"})
@@ -243,7 +243,7 @@ if st.session_state.df is not None:
                         pipe.fit(X_train, y_train)
                         y_pred = pipe.predict(X_test)
                         acc = accuracy_score(y_test, y_pred)
-                        results.append({"Model": name, "Accuracy": f"{acc:.2f}", "Classification Report": classification_report(y_test, y_pred)})
+                        results.append({"Model": name, "Accuracy": f"{acc:.4f}", "Classification Report": classification_report(y_test, y_pred)})
                     except Exception as e:
                         st.error(f"Error with {name}: {str(e)}")
                         results.append({"Model": name, "Accuracy": "Failed", "Classification Report": f"Error: {str(e)}"})
